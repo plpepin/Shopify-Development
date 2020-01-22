@@ -1,0 +1,97 @@
+**  AVAILABLE DEBUT SASS MIXINS/EXTENSIONS/VARIABLES **
+    as of JANUARY 22nd 2020
+
+->  PREFIXER
+
+    Values	
+
+    $property		Any CSS property that needs a prefix
+    $value			Any CSS value for that property
+    $prefixes		Single value or list webkit, moz, ms, o, spec
+
+    example:
+
+    @include prefixer(transition, all 2s ease-in-out, ms o spec);
+
+->  TRANSITION
+
+    transition($properties...)
+
+    example:
+
+    @include transition (all 2s ease-in-out);
+    @include transition (opacity 1s ease-in 2s, width 2s ease-out);
+    @include transition-property (transform, opacity);
+
+->  FLEXBOX
+
+    flexbox()		Outputs all possible flexbox vendor prefix values
+    example:		@include flexbox();
+
+    flex($values)	Shorthand for flex-grow, flex-shrink and flex-basis
+    example:		flex(1 1 auto)
+            flex(1 100%)
+
+    order($val)		order in which they appear in the flex container
+    example:		order(3)
+
+->  BREAKPOINT
+
+    Values	Coverage
+
+    xl 		  min-width: 1281px
+    l 		  max-width: 1280px
+    m		    max-width: 1020px
+    s		    max-width: 720px)
+    s-up 	  min-width: 721px
+	
+    example:
+
+    @include breakpoint(s) { ... }
+
+->  OTHERS (See theme.scss.liquid)
+
+    @mixin transform($property: none)
+    @mixin transform-origin($axes: 50%)
+    @mixin transform-style($style: flat)
+    @mixin animation($animate...)
+    @mixin keyframes($animation-name)
+    @mixin lt-ie10
+    @mixin font
+
+    EXTENSIONS
+
+    %font-smoothing
+    %clearfix
+    %loader
+    
+    example:
+    
+    .message {
+      @extend %clearfix;
+      border-color: red;
+    }
+
+    VARIABLES						      ORIGINAL VALUES
+
+    $max-width: 					    1020px;
+    $max-width-small: 				1020px;
+    $max-width-large: 				1200px;
+    $gutter: 						      30px;
+    $gutter-double: 				  $gutter * 2;
+    $gutter-triple: 				  $gutter * 3;
+    $gutter-half: 					  $gutter / 2;
+    $gutter-third: 					  $gutter / 3;
+    $gutter-vertical-large: 	50px;
+    $gutter-vertical-medium: 	40px;
+    $gutter-vertical-small: 	20px;
+    $form-padding: 					  15px;
+    $ease-out-quad: 				  cubic-bezier(0.250, 0.460, 0.450, 0.940);
+
+    $body-font-size: 				  16px;
+
+    $header-height: 				  110px;
+    $header-height-small:     70px;
+
+
+    -- EOF
