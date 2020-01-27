@@ -19,19 +19,38 @@
 {
     "name": "Page Content",
     "settings": [
-		{
+	{
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "options": [
+            {
+              "value": "default-style",
+              "label": "Default"
+            },
+            {
+              "value": "accent-style",
+              "label": "Accent"
+            },
+            {
+              "value": "contrast-style",
+              "label": "Contrast"
+            }
+          ],
+          "default": "default-style"
+        },
+	{
           "type":      "page",
           "id":        "page-handle",
           "label":     "Page"
       	}
 	],
   	"presets": [
-    {
-      "category": "Text",
-      "name": "Page Content",
-      "settings": {
-      }
-    }
+    	{
+		      "category": "Text",
+		      "name": "Page Content",
+		      "settings": {}
+    	}
   ]
 }
 {% endschema %}
