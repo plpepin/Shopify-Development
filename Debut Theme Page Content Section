@@ -1,0 +1,43 @@
+{% assign page = pages[section.settings.page-handle] %}
+
+<section
+  class="module-container {{ section.settings.style }} grid-of-{{ section.blocks.size }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="page-content">
+  <div class="module-inner home-page-content">
+    
+    <h2 class="section-title">{{ page.title | escape }}</h2>
+
+    <article class="home-left-right-feature clearfix media-aligned-right" style="margin-bottom: 10px;">
+    	{{ page.content }}
+    </article>
+    
+  </div>
+</section>
+
+{% schema %}
+{
+    "name": "Page Content",
+    "settings": [
+		{
+          "type":      "page",
+          "id":        "page-handle",
+          "label":     "Page"
+      	}
+	],
+  	"presets": [
+    {
+      "category": "Text",
+      "name": "Page Content",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
