@@ -1,0 +1,61 @@
+_moveSlideshow: function(direction) {
+      
+      console.log(this);
+      
+      this.direction = direction;
+      var valueXToMove = 0;
+
+      // Get current position of translateX
+      var currentTranslateXPosition = this._getTranslateXPosition();
+      var currentActiveSlidesIndex = this._getActiveSlidesIndex();
+
+      // In the future, we'll use ES6 deconstructure
+      // Math.min(...currentActiveSlidesIndex);
+      var currentActiveSlidesMinIndex = Math.min.apply(
+        Math,
+        currentActiveSlidesIndex
+      );
+      var currentActiveSlidesMaxIndex = Math.max.apply(
+        Math,
+        currentActiveSlidesIndex
+      );
+
+      // Set the next active state depending on the direction
+      // We bump up the index depending on the "slidesToShow" option
+      this.nextMinIndex =
+        direction === 'next'
+          ? currentActiveSlidesMinIndex + this.options.slidesToShow
+          : currentActiveSlidesMinIndex - this.options.slidesToShow;
+      this.nextMaxIndex =
+        direction === 'next'
+          ? currentActiveSlidesMaxIndex + this.options.slidesToShow
+          : currentActiveSlidesMinIndex - 1;
+
+      this.sliderTrack.style.transition = 'transform 500ms ease 0s';
+
+      if (direction === 'next') {
+
+        valueXToMove = currentTranslateXPosition - this.sliderTranslateXMove;
+        	
+        max = this.sliderItemWidthTotal - (this.sliderItemWidth * this.options.slidesToShow)
+        
+        valueXToMove = - Math.min( Math.abs(valueXToMove), max);
+        
+        this.sliderTrack.style.transform = 'translateX(' + valueXToMove + 'px)';
+      } else {
+        
+        //valueXToMove = currentTranslateXPosition + this.sliderTranslateXMove;
+        
+        valueXToMove = Math.min(0,currentTranslateXPosition + (this.options.slidesToScroll * this.sliderItemWidth));
+                
+        this.sliderTrack.style.transform = 'translateX(' + valueXToMove + 'px)';
+      }
+      
+      console.log("valueXToMove",valueXToMove);
+
+      this._verifyFirstLastSlideTranslateX(valueXToMove);
+
+      this._postTransitionEnd();
+
+      this._setupMultipleActiveSlide(this.nextMinIndex, this.nextMaxIndex);
+    },
