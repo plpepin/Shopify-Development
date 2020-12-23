@@ -1,0 +1,59 @@
+<!-- Shipping Discount Incentive -->
+<div id="purchase-incentives">
+  <div class="incentive-shipping"><i class="fas fa-truck"></i> ADD $100 MORE TO GET FREE SHIPPING</div>
+  <div class="incentive-returns"><i class="fas fa-check"></i> Relax with 21 Day Returns</div>
+  <div class="inventive-credit"><i class="fas fa-credit-card"></i> Pay by Card, PayPal, Apple Pay and Google Pay</div>
+</div>
+
+<style>
+{{ section.settings.buying-incentive-font | font_face }}  
+  
+#purchase-incentives {
+  font-family: {{ section.settings.buying-incentive-font.family  }};
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  color: black;
+}
+  
+  
+#purchase-incentives .fas {
+  width: 40px;
+  font-size: 17px;
+}
+  
+#purchase-incentives > div {
+      display: flex;
+      padding: 5px 0;
+  align-items: center;
+}
+
+#purchase-incentives .fa-truck {
+    color: cornflowerblue;
+   
+}
+  
+#purchase-incentives .fa-check {
+    color: limegreen;
+  font-size: 20px;
+}
+  
+#purchase-incentives .fa-truck,
+#purchase-incentives .fa-credit-card {
+ 	    top: 1px;
+    position: relative;
+}
+
+</style>
+
+{% schema %}
+...
+    {
+       "type": "font_picker",
+       "label": "Buying Incentive",
+       "id": "buying-incentive-font",
+       "default": "helvetica_n4"
+    }
+...
+{% endschema %}
