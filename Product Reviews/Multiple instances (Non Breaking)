@@ -1,24 +1,51 @@
 First:
 
 <!-- BEGIN SHOPIFY PRODUCT REVIEWS -->
-<div class="customer-reviews"></div>
-<script>
-  /* whiteoctop.us - Add Customer Reviews above the product form */
-  var customer_review_obj = null;
-  function handle_customer_reviews_json( data ) {
-
-    $('.customer-reviews').append(data.product);
-
-    customer_review_obj = data;
-  }
-  $(document).ready(function () {
-    $.getScript("https://productreviews.shopifycdn.com/proxy/v4/reviews/product?callback=handle_customer_reviews_json&product_id={{ product.id }}&version=v4&shop=chandally.myshopify.com")
-  });
-</script>
+<div class="customer-reviews customer-reviews-abridged"></div>
 <!-- END SHOPIFY PRODUCT REVIEWS -->
 
 Second (Complete):
 
 <!-- BEGIN SHOPIFY PRODUCT REVIEWS -->
-<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
-<!-- END SHOPIFY PRODUCT REVIEWS -->
+    <div class="rows">
+      <div class="columns">
+      	<div class="small-10 small-offset-1 large-8 large-offset-2">
+          <div class="customer-reviews-complete" id="customer_reviews_complete"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      /* whiteoctop.us - Add Customer Reviews above the product form */
+      var customer_review_obj = null;
+      function handle_customer_reviews_json( data ) {
+
+        /* First */
+        $('.customer-reviews-abridged').append(data.product);
+        
+        $(".customer-reviews .spr-summary-actions-newreview").on("click", function(){
+          
+            window.scrollTo({top:document.querySelector(".customer-reviews-complete").getBoundingClientRect().top,left:0,behavior: 'smooth'})
+            
+            $form = $(".customer-reviews-complete .spr-form")
+			$form.is(":hidden") ? $form.show() : $form.hide()
+        })
+        
+        /* Second */
+        $('.customer-reviews-complete').prepend(data.product)
+        $('.customer-reviews-complete .spr-reviews').append(data.reviews);
+        $('.customer-reviews-complete .spr-form').append(data.form);
+        
+        /* Button */
+        $(".customer-reviews-complete .spr-summary-actions-newreview").on("click",function(){
+            $form = $(this).parents(".spr-container").find(".spr-form");
+
+            $form.is(":hidden") ? $form.show() : $form.hide()
+        })
+		
+        customer_review_obj = data;
+      }
+      window.addEventListener("load", function () {
+        $.getScript("https://productreviews.shopifycdn.com/proxy/v4/reviews/product?callback=handle_customer_reviews_json&product_id={{ product.id }}&version=v4&shop=chandally.myshopify.com")
+      });
+    </script>
+    <!-- END SHOPIFY PRODUCT REVIEWS -->
