@@ -1,0 +1,99 @@
+/* whiteoctop.us - customer reviews styling */
+.spr-starrating.spr-summary-starrating {
+  display: block;
+  margin: 0 0 10px;
+  font-size: 13px;
+}
+
+.spr-summary {
+  text-align: center; 
+}
+.spr-summary-actions-newreview {
+  float: none !important; 
+}
+
+.spr-summary-actions-togglereviews {
+  display: block; 
+}
+
+.customer-reviews .spr-summary {
+  text-align: left;
+}
+
+.customer-reviews .spr-container {
+  padding: 0;
+  border: 0;
+}
+
+.customer-reviews .spr-icon-star:before {
+ 	width: 1.1em; 
+}
+
+.spr-summary-actions-newreview {
+ 	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 2px;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    height: 31px;
+    padding: 0 16px;
+    vertical-align: bottom;
+    width: auto;
+    zoom: 1;
+    font-family: var(--font--accent--family);
+    font-weight: var(--font--accent--weight);
+    font-style: var(--font--accent--style);
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    background: transparent;
+    border: 2px solid var(--color-button-bg);
+    color: var(--color-button-bg);
+    line-height: 27px;
+    -webkit-transition-property: color, border-color, background-color;
+    transition-property: color, border-color, background-color;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+}
+
+
+.customer-reviews {
+	margin: 10px 0 30px;
+}
+
+.customer-reviews .spr-header {
+  font-family: var(--font--accent--family);
+  font-weight: var(--font--accent--weight);
+  font-style: var(--font--accent--style);
+}
+
+.customer-reviews .spr-header-title {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: left;
+  margin-bottom: 0;
+  display:none;
+}
+
+.customer-reviews .spr-summary-actions-togglereviews {
+  display: none;
+}
+
+.customer-reviews .spr-reviews {
+  display: none; 
+}
+
+.customer-reviews .spr-review {
+
+}
+
+.customer-reviews .spr-form {
+
+}
