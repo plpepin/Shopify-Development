@@ -1,0 +1,24 @@
+First:
+
+<!-- BEGIN SHOPIFY PRODUCT REVIEWS -->
+<div class="customer-reviews"></div>
+<script>
+  /* whiteoctop.us - Add Customer Reviews above the product form */
+  var customer_review_obj = null;
+  function handle_customer_reviews_json( data ) {
+
+    $('.customer-reviews').append(data.product);
+
+    customer_review_obj = data;
+  }
+  $(document).ready(function () {
+    $.getScript("https://productreviews.shopifycdn.com/proxy/v4/reviews/product?callback=handle_customer_reviews_json&product_id={{ product.id }}&version=v4&shop=chandally.myshopify.com")
+  });
+</script>
+<!-- END SHOPIFY PRODUCT REVIEWS -->
+
+Second (Complete):
+
+<!-- BEGIN SHOPIFY PRODUCT REVIEWS -->
+<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+<!-- END SHOPIFY PRODUCT REVIEWS -->
