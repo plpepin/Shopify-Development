@@ -1,0 +1,176 @@
+/* Whiteoctop.us - Currency Switcher */
+.localization--main {
+  font-family: var(--font--paragraph--family);
+    font-weight: bold;
+    font-style: var(--font--paragraph--style);
+    font-size: var(--font--paragraph--size);
+}
+
+.localization--items {
+  border-radius: 7px;
+  max-height: 295px;
+  text-align: left;
+}
+
+.localization--item--link {
+ padding: 5px 15px
+}
+
+.localization--toggle {
+  font-size: inherit;
+  background-image: url({{ 'ico-chevron-down-black.svg' | asset_url }});
+  background-size: 15px;
+  background-position: 100% 45%;
+  background-color: transparent;
+  border-radius: 6px;
+  outline: none;
+}
+.localization--main:hover .localization--toggle {
+   /* background: rgba(0,0,0,.2);*/
+}
+.localization--toggle::before,
+.localization--item--link::before {
+  content: '';
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  display: inline-block;
+    width: 38px;
+    height: 25px;
+  vertical-align: middle;
+  margin-right: 6px;
+  border-radius: 3px;
+}
+
+.currency-aed::before {
+ background: url({{ 'ae.svg' | asset_url }}); 
+}
+
+.currency-aud::before {
+ background: url({{ 'au.svg' | asset_url }}); 
+}
+
+.currency-chf::before {
+ background: url({{ 'ch.svg' | asset_url }}); 
+}
+
+.currency-cny::before {
+ background: url({{ 'cn.svg' | asset_url }}); 
+}
+
+.currency-crc::before {
+ background: url({{ 'cr.svg' | asset_url }}); 
+}
+
+.currency-czk::before {
+ background: url({{ 'cz.svg' | asset_url }}); 
+}
+
+.currency-dkk::before {
+ background: url({{ 'dk.svg' | asset_url }}); 
+}
+
+.currency-eur::before {
+ background: url({{ 'eu.jpg' | asset_url }}); 
+}
+
+.currency-hkd::before {
+ background: url({{ 'hk.svg' | asset_url }}); 
+}
+
+.currency-ils::before {
+ background: url({{ 'il.svg' | asset_url }}); 
+}
+
+.currency-inr::before {
+ background: url({{ 'in.svg' | asset_url }}); 
+}
+
+.currency-isk::before {
+ background: url({{ 'is.svg' | asset_url }}); 
+}
+
+.currency-jpy::before {
+ background: url({{ 'jp.svg' | asset_url }}); 
+}
+
+.currency-krw::before {
+ background: url({{ 'kr.svg' | asset_url }}); 
+}
+
+.currency-lkr::before {
+ background: url({{ 'lk.svg' | asset_url }}); 
+}
+
+.currency-nok::before {
+ background: url({{ 'no.svg' | asset_url }}); 
+}
+
+.currency-nzd::before {
+ background: url({{ 'nz.svg' | asset_url }}); 
+}
+
+.currency-qar::before {
+ background: url({{ 'qa.svg' | asset_url }}); 
+}
+
+.currency-rub::before {
+ background: url({{ 'ru.svg' | asset_url }}); 
+}
+
+.currency-sar::before {
+ background: url({{ 'sa.svg' | asset_url }}); 
+}
+
+.currency-sek::before {
+ background: url({{ 'se.svg' | asset_url }}); 
+}
+
+.currency-sgd::before {
+ background: url({{ 'sg.svg' | asset_url }}); 
+}
+
+.currency-usd::before {
+ background: url({{ 'us.svg' | asset_url }}); 
+}
+
+.currency-zar::before {
+ background: url({{ 'za.svg' | asset_url }}); 
+}
+
+/* Whiteoctop.us - currency switcher in the mobile header */
+.mobile-currency-switcher .header--localization {
+  padding-right: 0;
+}
+
+.mobile-currency-switcher .localization--toggle {
+      width: 39px;
+    padding: 0;
+    margin-left: 10px;
+  background: none;
+}
+
+.mobile-currency-switcher .localization--toggle::before {
+  
+}
+
+.mobile-currency-switcher .currency-title {
+  display: none;
+}
+
+.mobile-currency-switcher .localization--items {
+  right: 0;
+}
+
+.header--mobile--cart {
+      display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header--mobile--title {
+ 	flex-shrink: 1; 
+}
+
+.header--mobile--menu {
+  min-width: 50px;
+}
