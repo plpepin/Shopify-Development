@@ -1,4 +1,8 @@
 /* whiteoctop.us - customer reviews styling */
+.template-product .price--container {
+  padding-bottom:0
+}
+
 .spr-starrating.spr-summary-starrating {
   display: block;
   margin: 0 0 10px;
