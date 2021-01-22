@@ -20,6 +20,7 @@ Second (Complete):
       function handle_customer_reviews_json( data ) {
 
         /* First */
+
         $('.customer-reviews-abridged').append(data.product);
         
         $(".customer-reviews .spr-summary-actions-newreview").on("click", function(){
@@ -29,7 +30,7 @@ Second (Complete):
             $form = $(".customer-reviews-complete .spr-form")
 			$form.is(":hidden") ? $form.show() : $form.hide()
         })
-        
+
         /* Second */
         $('.customer-reviews-complete').prepend(data.product)
         $('.customer-reviews-complete .spr-reviews').append(data.reviews);
