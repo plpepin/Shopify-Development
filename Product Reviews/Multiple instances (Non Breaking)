@@ -34,11 +34,12 @@ Second (Complete):
         /* Second */
         $('.customer-reviews-complete').prepend(data.product)
         $('.customer-reviews-complete .spr-reviews').append(data.reviews);
-        $('.customer-reviews-complete .spr-form').append(data.form);
         
         /* Button */
         $(".customer-reviews-complete .spr-summary-actions-newreview").on("click",function(){
-            $form = $(this).parents(".spr-container").find(".spr-form");
+        	$('.customer-reviews-complete .spr-form').append(data.form);
+          
+          	$form = $(this).parents(".spr-container").find(".spr-form");
 
             $form.is(":hidden") ? $form.show() : $form.hide()
         })
