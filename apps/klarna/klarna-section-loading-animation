@@ -1,5 +1,7 @@
 // CSS
+/* product Klarna section - anti-jump */
 .klarna-container {
+  	position: relative;
 	height: 60px;
   	margin-top: 20px;
   	background: rgb(244, 244, 244);
@@ -8,6 +10,20 @@
 }
 @-webkit-keyframes loading { from { background-color: rgb(244, 244, 244) } to { background-color: rgb(255, 255, 255) }  }
         @keyframes loading { from { background-color: rgb(244, 244, 244) } to { background-color: rgb(255, 255, 255) }  }
+.klarna-container:before {
+    content: 'Split Payment option loading...';
+    text-align: center;
+    width: 100%;
+    display: block;
+    line-height: 390%;
+  	position: absolute;
+  	z-index: 0;
+}
+.klarna-container > div {
+  	background: white;
+    z-index: 1;
+    position: relative;
+}
         
 // HTML
 <div class="klarna-container">
