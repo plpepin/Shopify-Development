@@ -1,0 +1,15 @@
+// CSS
+.klarna-container {
+	height: 60px;
+  	margin-top: 20px;
+  	background: rgb(244, 244, 244);
+  	-webkit-animation: .5s linear 1s infinite alternate loading;
+    		animation: .5s linear 1s infinite alternate loading;
+}
+@-webkit-keyframes loading { from { background-color: rgb(244, 244, 244) } to { background-color: rgb(255, 255, 255) }  }
+        @keyframes loading { from { background-color: rgb(244, 244, 244) } to { background-color: rgb(255, 255, 255) }  }
+        
+// HTML
+<div class="klarna-container">
+  <span id="ShopifyKlarnaOnSiteMessagingAppElement"></span>
+</div>
