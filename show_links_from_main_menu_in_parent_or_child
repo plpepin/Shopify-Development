@@ -1,41 +1,67 @@
 {% assign this_collection__handle = collection.handle %}
-{% assign collectionIsPartOf = null %}
 {% assign is_parent_collection = false %}
 {% assign parent_collection_linklist = "" %}
 {% assign is_child_collection = false %}
 {% assign is_child_collection_of = "" %}
 {% assign child_collection_linklist = "" %}
-{% assign sub_links = "" %}
+
+{% comment %}
+this_collection__handle: {{ this_collection__handle }},<br>
+top_menu: {{ top_menu }}, <br>
+is_parent_collection: {{ is_parent_collection }},<br>
+is_child_collection: {{ is_child_collection }},<br>
+{% endcomment %}
 
 {% comment %} <!-- Loop thru all MAIN links --> {% endcomment %}
 {% for top_menu_link in linklists[top_menu].links %}
 	
-	{% comment %} <!-- top_menu_link: Bikes, Accessories, Apparel, Parts, About --> {% endcomment %}
+	{% comment %} <!-- top_menu_link ie: Bikes, Accessories, Apparel, Parts, About --> {% endcomment %}
 	
-	{% for collection_link in top_menu_link.links %}
-		
-		{% comment %} <!-- collection_link: "Road Bikes", "Mountain Bikes", ect --> {% endcomment %}
+	{% comment %}
+	{% if top_menu_link.handle == "accessories" %}
+      top_menu_link.handle = {{ top_menu_link.handle }}<br>
+      top_menu_link.active = {{ top_menu_link.active }}<br>
+      top_menu_link.current = {{ top_menu_link.current }}<br>
+      top_menu_link.type = {{ top_menu_link.type }}<br>
+      top_menu_link.object.title = {{ top_menu_link.object.title }}<br><br><br>
+    {% endif %}
+	{% endcomment %}
 
-		{% if collection_link.handle == this_collection__handle %}
+	{% for megamenu_link in top_menu_link.links %}
+		
+		{% comment %}
+		{% if top_menu_link.handle == "accessories" %}
+			megamenu_link.handle = {{ megamenu_link.handle }}<br>
+			megamenu_link.active = {{ megamenu_link.active }}<br>
+			megamenu_link.current = {{ megamenu_link.current }}<br>
+			megamenu_link.type = {{ megamenu_link.type }}<br>
+			megamenu_link.object.title = {{ megamenu_link.object.title }}<br>
+			megamenu_link.object.handle = {{ megamenu_link.object.handle }}<br><br><br>
+		{% endif %}
+		{% endcomment %}
+
+		{% comment %} <!-- megamenu_link ie: "Road Bikes", "Mountain Bikes", ect --> {% endcomment %}
+	    
+		{% if megamenu_link.type == "collection_link" and megamenu_link.object.handle == this_collection__handle %}
 			{% comment %} <!-- This collection matches a top collection in the mega menu --> {% endcomment %}
 			{% assign is_parent_collection = true %}
-			{% assign parent_collection_linklist = collection_link %}
+			{% assign parent_collection_linklist = megamenu_link %}
         {% endif %}
 
-		{% for link in collection_link.links %}
+		{% for megamenu_col_link in megamenu_link.links %}
 			
 			{% comment %} <!-- link: Gravel & Touring Bikes, Race & Aero Road Bikes, Performance Endurance Road Bikes --> {% endcomment %}
 			
-			{% if link.handle == this_collection__handle %}
+			{% if megamenu_col_link.handle == this_collection__handle %}
 				
 				{% assign is_child_collection = true %}
-				{% assign is_child_collection_of = collection_link.title %}
-				{% assign parent_collection_linklist = collection_link %}
+				{% assign is_child_collection_of = megamenu_col_link.title %}
+				{% assign parent_collection_linklist = megamenu_link %}
 
 			{% endif %}
 
 			{% comment %} <!-- link: Gravel & Touring Bikes, Race & Aero Road Bikes, Performance Endurance Road Bikes --> {% endcomment %}
-            {% assign child_collection_linklist = collection_link %}
+            {% assign child_collection_linklist = megamenu_link %}
 
 		{% endfor %}
 
@@ -52,6 +78,13 @@
     {% endif %}
 	{% endcomment %}
     <ul class="toggle_list">
+      <li>
+      {% if is_parent_collection %}
+    	{{ parent_collection_linklist.title }}<span class="right icon-down-arrow"></span>
+      {% elsif is_child_collection %}
+      	{{ is_child_collection_of }}<span class="right icon-down-arrow"></span>
+      {% endif %}
+      </li>
       {% for link in parent_collection_linklist.links %}
       <li>
         <a href="{{ link.url }}">{{ link.title }}</a>
