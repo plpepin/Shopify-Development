@@ -1,0 +1,61 @@
+{% assign this_collection__handle = collection.handle %}
+{% assign collectionIsPartOf = null %}
+{% assign is_parent_collection = false %}
+{% assign parent_collection_linklist = "" %}
+{% assign is_child_collection = false %}
+{% assign is_child_collection_of = "" %}
+{% assign child_collection_linklist = "" %}
+{% assign sub_links = "" %}
+
+{% comment %} <!-- Loop thru all MAIN links --> {% endcomment %}
+{% for top_menu_link in linklists[top_menu].links %}
+	
+	{% comment %} <!-- top_menu_link: Bikes, Accessories, Apparel, Parts, About --> {% endcomment %}
+	
+	{% for collection_link in top_menu_link.links %}
+		
+		{% comment %} <!-- collection_link: "Road Bikes", "Mountain Bikes", ect --> {% endcomment %}
+
+		{% if collection_link.handle == this_collection__handle %}
+			{% comment %} <!-- This collection matches a top collection in the mega menu --> {% endcomment %}
+			{% assign is_parent_collection = true %}
+			{% assign parent_collection_linklist = collection_link %}
+        {% endif %}
+
+		{% for link in collection_link.links %}
+			
+			{% comment %} <!-- link: Gravel & Touring Bikes, Race & Aero Road Bikes, Performance Endurance Road Bikes --> {% endcomment %}
+			
+			{% if link.handle == this_collection__handle %}
+				
+				{% assign is_child_collection = true %}
+				{% assign is_child_collection_of = collection_link.title %}
+				{% assign parent_collection_linklist = collection_link %}
+
+			{% endif %}
+
+			{% comment %} <!-- link: Gravel & Touring Bikes, Race & Aero Road Bikes, Performance Endurance Road Bikes --> {% endcomment %}
+            {% assign child_collection_linklist = collection_link %}
+
+		{% endfor %}
+
+    {% endfor %}
+
+{% endfor %}
+
+{% if is_parent_collection or is_child_collection %}
+	{% comment %}
+    {% if is_parent_collection %}
+    	<h4 class="toggle">{{ parent_collection_linklist.title }}<span class="right icon-down-arrow"></span></h4>
+    {% elsif is_child_collection %}
+    	<h4 class="toggle">{{ is_child_collection_of }}<span class="right icon-down-arrow"></span></h4>
+    {% endif %}
+	{% endcomment %}
+    <ul class="toggle_list">
+      {% for link in parent_collection_linklist.links %}
+      <li>
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+{% endif %}
