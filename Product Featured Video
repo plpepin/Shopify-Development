@@ -1,0 +1,38 @@
+<!-- 
+	Product Featured Video 
+-->
+
+<style>
+  .product-featured-image_container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  }
+
+  /* Then style the iframe to fit in the container div with full height and width */
+  .responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+{% if "coffret-renaissance-bain-et-corps,ensemble-exfoliation-gant-corps-accessoire-visage" contains product.handle %}
+<div class="product-featured-image_container">
+	<iframe id="ytplayer_V6AEafhWI-o" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/V6AEafhWI-o?controls=0" frameborder="0" allowfullscreen class="responsive-iframe"></iframe>
+</div>
+{% endif %}
+  
+{% comment %} The following would be in case a poster image needs to be used {% endcomment %}
+  
+{% comment %}
+<div class="video">
+    <img src="poster.jpg">
+    <!-- <iframe id="ytplayer" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/V6AEafhWI-o?controls=0" frameborder="0" allowfullscreen></iframe> -->
+</div>
+{% endcomment %}
