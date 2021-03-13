@@ -1,0 +1,54 @@
+{%- comment -%}
+  
+  Purpose: SEO
+	Description: This file outputs the keywords <meta> tag.
+  Support: Only supports Collections at this time
+  How to: Include {% render 'seo_meta_keywords' %} between the <head></head> tags
+  
+{%- endcomment -%}
+
+{%- if collection -%}
+
+  {%- case collection.handle -%}
+    {%- when "road-bikes" -%}
+        {%- assign content = "" -%}
+    {%- when "mountain-bikes" -%}
+        {%- assign content = "" -%}
+    {%- when "cruiser-comfort-bikes" -%}
+        {%- assign content = "" -%}
+    {%- when "commuter-city-bikes" -%}
+        {%- assign content = "" -%}
+    {%- when "all" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+    {%- when "" -%}
+        {%- assign content = "" -%}
+  {%- endcase -%}
+
+{%- endif -%}
+<meta name="keywords" content="{{ content }}" />
