@@ -1,0 +1,39 @@
+<span class="currency-switcher-links">
+{% form 'currency' %}
+  {% for currency in shop.enabled_currencies %}
+    {% if currency == cart.currency %}
+  	<span class="current currency"><a href="?currency={{currency.iso_code}}">{{currency.iso_code}} {{currency.symbol}}</a></span>
+    {% else %}
+  <span class="currency"><a href="?currency={{currency.iso_code}}">{{currency.iso_code}}</a></span>
+    {% endif %}
+  {% endfor %}
+{% endform %}
+</span>
+
+<style>
+.currency-switcher-links .currency.current {
+  display: none;
+}
+
+.currency-switcher-links form {
+  display: inline; 
+}
+
+/* Header - Switchers */
+.currency-switcher-links {
+  border: 1px solid white;
+  padding: 12px; 
+}
+
+.currency-switcher-links a {
+  color: white !important;
+}
+
+.header-wrapper:hover .currency-switcher-links {
+  border-color: black;
+}
+
+.header-wrapper:hover .currency-switcher-links a {
+  color: black !important;
+}
+</style>
