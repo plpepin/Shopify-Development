@@ -1,1 +1,5 @@
+# Liquid only
 request.locale.iso_code       // en, fr
+
+# HTML5
+<html lang="{{ request.locale.iso_code }}">
