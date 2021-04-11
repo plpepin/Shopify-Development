@@ -1,0 +1,37 @@
+<script>
+  /* Useful when using swatches or creating your own graphical interface to choose a value. Since the drop down select element must remain hidden, this changes the value of the hidden select dropdown so the Shopify Option Selection mechanism works properly */
+  document.querySelectorAll('form[action="/cart/add"] input[type=radio]').forEach(function(el){
+      el.addEventListener('click', function(){
+        var selectElement = this.parentElement.parentElement.nextElementSibling.children.item(0)
+        
+        selectElement.value = this.value;
+        selectElement.dispatchEvent(new Event('change'));    
+      });
+  });
+</script>
+
+
+<!-- So the above would work when doing something like this -->
+
+{% elsif option.name == "Size" %}
+    <div class="swatches-size">
+    {% for value in option.values %}
+        <input type="radio" name="size" value="{{ value | escape }}"{% if option.selected_value == value %} checked="checked"{% endif %} id="swatch-size-{{ value | handle }}">
+        <label class="swatch" for="swatch-size-{{ value | handle }}">{{ value }}</label>
+    {% endfor %}
+    </div>
+    <div class="selector-wrapper js product-form__item">
+      <label for="SingleOptionSelector-{{ forloop.index0 }}">
+      {{ option.name }}
+      </label>
+
+      <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input {% if option.name == "Size" %}hide{% endif %}"
+              id="SingleOptionSelector-{{ forloop.index0 }}"
+              data-index="option{{ forloop.index }}"
+              >
+        {% for value in option.values %}
+        <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+        {% endfor %}
+      </select>
+    </div>
+{% endif %}
