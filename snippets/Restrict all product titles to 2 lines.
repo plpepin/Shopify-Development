@@ -1,0 +1,20 @@
+<a class="p-link--no-accent" href="{{ product.url | within: collection }}">
+  <style>
+    .p-link--no-accent .top-row { display: block }
+    .p-link--no-accent .bottom-row {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+  </style>
+  {% assign title_rowTop = product.title | truncatewords: 3, "" %}
+  {% assign title_rowBottom = product.title | replace: title_rowTop, "" %}
+  <span class="top-row">{{ title_rowTop }}</span>
+  <span class="bottom-row">{{ title_rowBottom }}</span>
+</a>
+
+Solution. Text-overflow is great but only works on text that is on 1 line.
+1) We always truncate the first row of text to 3 words and make sure the space after is not ellipses but blank by using the 2nd parameter of truncate
+2) We display the rest of the product title on the second row. The CSS now takes over and covers the overflow with ellipses no matter the number of words
