@@ -1,0 +1,18 @@
+{%- comment -%}
+
+    Usage
+    {% render 'svg-text', 
+        id: "footer-logo", 
+        text: 'My Logo', 
+        size: '25' 
+    %}
+
+{%- endcomment -%}
+<svg id="{{ id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 {{ size | plus: 1 }}">
+    <text
+        y="{{ size }}" 
+        font-size="{{ size }}" 
+        style="fill: #ffffff; letter-spacing: 0; font-size-adjust: 1; stroke-width: 0">
+        {{ text }}
+    </text>
+</svg>
